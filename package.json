@@ -1,0 +1,22 @@
+{
+  "name": "agile-yoga",
+  "version": "1.0.0",
+  "description": "Agile project",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdevika-70/CS555_A_Project.git"
+  },
+  "author": "Devika Mhatre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdevika-70/CS555_A_Project/issues"
+  },
+  "homepage": "https://github.com/mdevika-70/CS555_A_Project#readme",
+  "dependencies": {
+    "mongodb": "^4.1.3"
+  }
+}
