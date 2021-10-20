@@ -5,6 +5,7 @@ const admin = data.admin;
 const { ObjectId } = require("mongodb");
 
 async function main() {
+  //start
   const db = await dbConnection();
   await db.dropDatabase();
   await db.serverConfig.close();
