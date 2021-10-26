@@ -71,48 +71,7 @@ module.exports = {
     }
   },
 
-  //tested
-  checkFacet(facet) {
-    if (facet === undefined) {
-      throw `Please pass facet parameter to the function`;
-    }
-
-    if (!Array.isArray(facet)) {
-      throw `Facet value should be of type Array`;
-    }
-    if (facet.length < 2) {
-      throw `Item should have atleast one property.`;
-    }
-
-    for (element of facet) {
-      this.checkObject(element, "Element of Facet");
-      this.checkString(element.property, "Property ");
-      if (element.value === undefined || element.value === null) {
-        throw `You must set a value for the property ${element.property} of facet.`;
-      }
-
-      if (
-        typeof element.value !== "number" &&
-        typeof element.value !== "string"
-      ) {
-        throw `The type of ${
-          element.property
-        } should be a number or string. It cannot be a type of ${typeof element.value}.`;
-      }
-
-      if (Object.keys(element).length !== 2) {
-        throw `A facet Property should have only two keys i.e., property and value`;
-      }
-    }
-
-    if (facet[0].property != "product_type") {
-      throw `First element of Facet must have product_type property.`;
-    }
-
-    if (typeof facet[0].value !== "string") {
-      throw `The value of product_type property must be a string.`;
-    }
-  },
+  
 
   //tested
   checkStringOrInt(parameter, name) {
