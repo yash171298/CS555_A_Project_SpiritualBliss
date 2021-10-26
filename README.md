@@ -2,7 +2,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About SpiritualBliss
 
-Spiritual Bliss is all about help people improve their mental health and live healthy.
+Spiritual Bliss is all about helping people improve their mental health and live healthy.
 
 <!-- CONTRIBUTING -->
 ## Contributing
