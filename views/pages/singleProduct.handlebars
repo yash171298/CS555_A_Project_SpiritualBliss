@@ -1,0 +1,90 @@
+<div class="container single_prod_container">
+
+ 
+  <section class="px-md-5 mx-md-5 text-center text-lg-left dark-grey-text">
+
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+       <div class="col-md-6 mb-4 mb-md-0">
+        <div class="view overlay z-depth-1-half">
+          <img
+            src="{{product.productImage}}"
+            alt="single product"
+            height="250"
+          />
+        </div>
+      </div>
+      <div class="col-md-6 mb-4 mb-md-0">
+
+        {{!-- <h1 class="font-weight-bold">{{product.title}}</h1>
+
+        <p class="cart_dynamic_content">{{product.description}}</p>
+        <p class="cart_dynamic_content">Price: ${{product.price}}</p> --}}
+
+        {{#if authenticated}}
+        <form id="reviewForm">
+          <label for= "review">
+            Enter Your Review
+          </label>
+          <input id="review" type="text" name="review" />
+          <button
+            class="add_review"
+            type="submit"
+            data-id="{{product._id}}"
+          >Submit</button>
+        </form>
+
+        <p>
+          <a
+            class="product_like"
+            href=""
+            data-id="{{product._id}}"
+            id="unliked"
+          >{{product.noOfLikes}} Likes: <i class="fa fa-thumbs-up"></i></a>
+        </p>
+        {{else}}
+        <p>{{product.noOfLikes}} Likes</p>
+
+        {{/if}}
+
+        <div>
+
+
+        <div class="prod_comment">
+
+          <div class="productPropHeading">User reviews on the video</div>
+
+          {{#if hascomments}}
+
+            {{#each comments}}
+              <p>
+                {{this}}
+              </p>
+
+            {{/each}}
+          {{else}}
+            <p>No comments</p>
+          {{/if}}
+
+        </div>
+
+          {{!-- {{#if authenticated}}
+          {{> (lookup . 'partial') }}
+        <a
+          class="btn btn-primary buy_now"
+          href=""
+          role="button"
+          data-id="{{product._id}}"
+        > Add to Cart <i class=""></i></a>
+        {{else}}
+        <p> Please SignIn to your user account to buy, like and comment on products. </p>
+
+        {{/if}} --}}
+
+      </div>
+     
+    </div>
+  </section>
+
+</div>
