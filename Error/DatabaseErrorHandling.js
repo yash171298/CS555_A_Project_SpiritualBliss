@@ -88,69 +88,7 @@ module.exports = {
     }
   },
 
-  //tested
-  checkFilterProperties(properties) {
-    if (typeof properties === "undefined") {
-      throw "Please provide properties to filter products.";
-    }
-
-    this.checkObject(properties, "properties");
-
-    if (properties["product_type"] === undefined) {
-      throw "You must pass product_type property to filter products";
-    }
-    let count = 0;
-    for (const [_, value] of Object.entries(properties)) {
-      this.checkStringOrInt(value, "Property value");
-      count = count + 1;
-    }
-  },
-
-  //tested
-  checkPropertiesOfProduct(properties) {
-    if (typeof properties === undefined) {
-      throw `Please pass properies list into addNewProductType method `;
-    }
-
-    if (!Array.isArray(properties)) {
-      throw `Properties passing into addNewProductType method should be of array type.`;
-    }
-
-    if (properties.length < 1) {
-      throw `You should pass atleast two properties into addNewProductType method.`;
-    }
-
-    for (obj of properties) {
-      this.checkObject(obj, "property");
-
-      if (obj["property"] === undefined) {
-        throw "You should mention the name of each property";
-      }
-
-      this.checkString(obj["property"], "property");
-
-      if (obj["value"] === undefined) {
-        throw "You should mention the type of each property";
-      }
-
-      this.checkStringOrInt(obj["value"], "propery value");
-
-      if (
-        typeof obj["value"] !== "string" &&
-        typeof obj["value"] !== "number"
-      ) {
-        throw "Property value type should be either string or number";
-      }
-
-      if (!(Object.keys(obj).length === 2)) {
-        throw " A property object should have only two keys i.e., property and value.";
-      }
-    }
-
-    // if (properties[0].property != "product_type") {
-    //   throw `First element of properties list must have product_type property.`;
-    // }
-  },
+ 
 
   //Tested
   checkBoolean(boolValue, name) {
@@ -163,40 +101,7 @@ module.exports = {
     }
   },
 
-  //tested //should test again
-  checkProperty(obj) {
-    this.checkObject(obj, "Property");
-
-    if (obj["name"] === undefined) {
-      throw "You should mention the name of each property";
-    }
-
-    this.checkString(obj["name"], "propery name");
-
-    if (obj["type"] === undefined) {
-      throw "You should mention the type of each property";
-    }
-
-    this.checkString(obj["type"], "propery type");
-
-    if (obj["type"] !== "string" && obj["type"] !== "number") {
-      throw "Property type should be either string or number";
-    }
-
-    let noOfKeys = 2;
-
-    if (obj["count"] !== undefined) {
-      noOfKeys++;
-    }
-
-    if (obj["values"] !== undefined) {
-      noOfKeys++;
-    }
-
-    if (!(Object.keys(obj).length === noOfKeys)) {
-      throw " A property object should have  two properties i.e., name and type.";
-    }
-  },
+ 
 
   //tested
   checkPhoneNumber(phoneNumber) {
