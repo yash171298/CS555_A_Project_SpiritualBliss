@@ -1,4 +1,3 @@
-# CS555_A_Project
 
 <!-- ABOUT THE PROJECT -->
 ## About SpiritualBliss
