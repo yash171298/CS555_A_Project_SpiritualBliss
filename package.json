@@ -1,5 +1,5 @@
 {
-  "name": "green-cart",
+  "name": "agile_yoga",
   "version": "1.0.0",
   "description": "Prototype of our project.",
   "main": "app.js",
@@ -10,18 +10,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hanishsairohit/GreenCart.git"
+    "url": ""
   },
   "keywords": [
     "Master",
     "Prototype"
   ],
-  "author": "Group 8",
+  "author": "devika",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hanishsairohit/GreenCart/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/hanishsairohit/GreenCart#readme",
+  "homepage": "",
   "dependencies": {
     "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
