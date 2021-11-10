@@ -1,0 +1,36 @@
+<head>
+  <title>
+    {{keyobject.name}}
+  </title>
+</head>
+<main>
+
+ <div> 
+  <h1>{{keyobject.name}}</h1> 
+  <img alt= "{{keyobject.name}}" src="{{keyobject.image.medium}}"/> 
+  <dl class="dltag"> 
+    <dt>Language</dt> 
+    <dd>{{keyobject.language}}</dd> 
+    <dt>Genres</dt> 
+    <dd> 
+   {{#if keyobject.genres.length}}
+    
+    <ul>
+      {{#each keyobject.genres}}
+        <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  {{/if}}
+
+    </dd> 
+    <dt>Average Rating</dt> 
+    <dd>{{keyobject.rating.average}}</dd> 
+    <dt>Network</dt> 
+    <dd>{{keyobject.network.name}}</dd> 
+    <dt>Summary</dt> 
+    
+    <dd>{{{keyobject.summary}}}</dd> 
+  </dl> 
+</div> 
+
+</main>
