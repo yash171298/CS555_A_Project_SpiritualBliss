@@ -1,0 +1,99 @@
+<div class="container single_prod_container">
+
+ 
+  <section class="px-md-5 mx-md-5 text-center text-lg-left dark-grey-text">
+
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-md-6 mb-4 mb-md-0">
+
+        <h1 class="font-weight-bold">{{product.title}}</h1>
+
+        <p class="cart_dynamic_content">{{product.description}}</p>
+        {{!-- <p class="cart_dynamic_content">Price: ${{product.price}}</p> --}}
+
+        {{#if authenticated}}
+        <form id="reviewForm">
+          <label style="color:wheat" for= "review">
+            Enter Your Review
+          </label>
+          <input id="review" type="text" name="review" />
+          <button
+            class="add_review"
+            type="submit"
+            data-id="{{product._id}}"
+          >Submit</button>
+        </form>
+
+        <p style="color:green">
+          <a
+            class="product_like"
+            href=""
+            data-id="{{product._id}}"
+            id="unliked"
+          >{{product.noOfLikes}} Likes: <i class="fa fa-thumbs-up"></i></a>
+        </p>
+        {{else}}
+        <p style="color:green">{{product.noOfLikes}} Likes</p>
+
+        {{/if}}
+
+        <div>
+
+          {{!-- <div class="productPropHeading">Product Properties</div>
+
+          {{#each product.facet}}
+            <p>
+              {{this.property}}
+              :
+              {{this.value}}
+            </p>
+
+          {{/each}} --}}
+
+        </div>
+
+        <div class="prod_comment">
+
+          <div class="productPropHeading">User reviews on the product</div>
+
+          {{#if hascomments}}
+
+            {{#each comments}}
+              <p style="color:wheat">
+                {{this}}
+              </p>
+
+            {{/each}}
+          {{else}}
+            <p>No comments</p>
+          {{/if}}
+
+        </div>
+
+          {{#if authenticated}}
+          {{> (lookup . 'partial') }}
+       
+        {{else}}
+        <p style="color:#d1591f"> Please Sign-In to your user account to like and comment on video. </p>
+
+        {{/if}}
+
+      </div>
+      <div class="col-md-6 mb-4 mb-md-0">
+        <div class="view overlay z-depth-1-half">
+          {{!-- <img
+            src="{{product.productImage}}"
+            alt="single product"
+            height="250"
+          /> --}}
+           <iframe width="450" height="400"
+src={{product.productImage}}>
+</iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
