@@ -398,5 +398,14 @@ router.get("/testimonial", async (req, res) => {
    
 });
 
+router.get("/feedback", async (req, res) => {
+ 
+  return res.render("pages/contactUs", {
+    
+  });
+
+});
+
+
 
 module.exports = router;
