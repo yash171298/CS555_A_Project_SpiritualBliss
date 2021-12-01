@@ -286,4 +286,117 @@ router.post("/signup", async (req, res) => {
   }
 });
 
+//Update User routes - Rishikesh
+router.get("/updateUser", async (req, res) => {
+  if (req.session.user) {
+    try {
+      
+        const userInfo = await usersData.getUser(req.session.user._id);
+        return res.render("pages/updateUserDetail", {
+          title: "Edit Profile Page",
+          authenticated: true,
+          adminAuth: req.session.admin ? true : false,
+          user: userInfo
+        });
+    } catch (error) {
+      console.log(error);
+      return res.sendStatus(404);
+    }
+  }
+  else {
+    return res.redirect("/users/form");
+  }
+});
+
+router.post("/updateUser", async (req, res) => {
+  if (req.session.user) {
+    let dataUpdate = req.body;
+    const firstName = xss(dataUpdate.firstName);
+    const lastName = xss(dataUpdate.lastName);
+    const email = req.session.user.emailId;
+    const phoneNumber = xss(dataUpdate.phoneNumber);
+    const Line1 = xss(dataUpdate.Line1);
+    const Line2 = xss(dataUpdate.Line2);
+    const City = xss(dataUpdate.City);
+    const State = xss(dataUpdate.State);
+    const ZipCode = xss(dataUpdate.ZipCode);
+
+    errors = [];
+    if (!errorCheck.stringCheck(firstName))
+      errors.push("Invalid FirstName");
+    if (!errorCheck.stringCheck(lastName))
+      errors.push("Invalid LastName");
+    if (!errorCheck.phoneNumberValid(phoneNumber))
+      errors.push("Invalid PhoneNumber");
+    if (!errorCheck.stringCheck(Line1))
+      errors.push("Invalid LineOne");
+    if (!errorCheck.stringCheck(Line2))
+      errors.push("Invalid LineTwo");
+    if (!errorCheck.stringCheck(City))
+      errors.push("Invalid City");
+    if (!errorCheck.stringCheck(State))
+      errors.push("Invalid State");
+    if (!errorCheck.zipcCodeValid(ZipCode))
+      errors.push("Invalid Zip Code");
+    address = {
+      Line1: Line1,
+      Line2: Line2,
+      City: City,
+      State: State,
+      ZipCode: parseInt(ZipCode),
+      Country: "USA",
+    };
+    try {
+      dataError.checkAddress(address);
+      if (errors.length > 0) {
+        return res.render("pages/updateUserDetail", {
+          authenticated: false,
+          title: "Error Update",
+          errors: errors,
+          dataUpdate: dataUpdate,
+          user: req.session.user
+        });
+      }
+      let id = req.session.user._id.toString();
+      console.log(typeof id);
+      const updatedUser = await usersData.updateUser(
+        id,
+        firstName,
+        lastName,
+        phoneNumber,
+        email.toLowerCase(),
+        address
+      );
+      if(updatedUser){
+        req.session.user = updatedUser;
+        res.redirect("/");
+      }
+      else{
+        errors.push("Failed to update user info!");
+      }
+    }
+    catch (error) {
+      errors.push(error);
+      return res.render("pages/updateUserDetail", {
+        title: errors[0],
+        authenticated: false,
+        errors: errors,
+        user: req.session.user
+      });
+    }
+  }
+  else {
+    return res.redirect("/users/form");
+  }
+});
+
+router.get("/testimonial", async (req, res) => {
+ 
+        return res.render("pages/testimonial", {
+          
+        });
+   
+});
+
+
 module.exports = router;

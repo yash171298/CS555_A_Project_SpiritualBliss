@@ -6,25 +6,16 @@
     <!--Grid row-->
     <div class="row">
       <!--Grid column-->
-       <div class="col-md-6 mb-4 mb-md-0">
-        <div class="view overlay z-depth-1-half">
-          <img
-            src="{{product.productImage}}"
-            alt="single product"
-            height="250"
-          />
-        </div>
-      </div>
       <div class="col-md-6 mb-4 mb-md-0">
 
-        {{!-- <h1 class="font-weight-bold">{{product.title}}</h1>
+        <h1 class="font-weight-bold">{{product.title}}</h1>
 
         <p class="cart_dynamic_content">{{product.description}}</p>
-        <p class="cart_dynamic_content">Price: ${{product.price}}</p> --}}
+        {{!-- <p class="cart_dynamic_content">Price: ${{product.price}}</p> --}}
 
         {{#if authenticated}}
         <form id="reviewForm">
-          <label for= "review">
+          <label style="color:wheat" for= "review">
             Enter Your Review
           </label>
           <input id="review" type="text" name="review" />
@@ -35,7 +26,7 @@
           >Submit</button>
         </form>
 
-        <p>
+        <p style="color:green">
           <a
             class="product_like"
             href=""
@@ -44,21 +35,33 @@
           >{{product.noOfLikes}} Likes: <i class="fa fa-thumbs-up"></i></a>
         </p>
         {{else}}
-        <p>{{product.noOfLikes}} Likes</p>
+        <p style="color:green">{{product.noOfLikes}} Likes</p>
 
         {{/if}}
 
         <div>
 
+          {{!-- <div class="productPropHeading">Product Properties</div>
+
+          {{#each product.facet}}
+            <p>
+              {{this.property}}
+              :
+              {{this.value}}
+            </p>
+
+          {{/each}} --}}
+
+        </div>
 
         <div class="prod_comment">
 
-          <div class="productPropHeading">User reviews on the video</div>
+          <div class="productPropHeading">User reviews on the product</div>
 
           {{#if hascomments}}
 
             {{#each comments}}
-              <p>
+              <p style="color:wheat">
                 {{this}}
               </p>
 
@@ -69,21 +72,27 @@
 
         </div>
 
-          {{!-- {{#if authenticated}}
+          {{#if authenticated}}
           {{> (lookup . 'partial') }}
-        <a
-          class="btn btn-primary buy_now"
-          href=""
-          role="button"
-          data-id="{{product._id}}"
-        > Add to Cart <i class=""></i></a>
+       
         {{else}}
-        <p> Please SignIn to your user account to buy, like and comment on products. </p>
+        <p style="color:#d1591f"> Please Sign-In to your user account to like and comment on video. </p>
 
-        {{/if}} --}}
+        {{/if}}
 
       </div>
-     
+      <div class="col-md-6 mb-4 mb-md-0">
+        <div class="view overlay z-depth-1-half">
+          {{!-- <img
+            src="{{product.productImage}}"
+            alt="single product"
+            height="250"
+          /> --}}
+           <iframe width="450" height="400"
+src={{product.productImage}}>
+</iframe>
+        </div>
+      </div>
     </div>
   </section>
 

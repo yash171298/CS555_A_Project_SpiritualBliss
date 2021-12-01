@@ -1,14 +1,3 @@
-//addUser() // tested
-//getUser() // tested // Error Handling
-//getAllUsers() // tested // Error Handling
-//addCommentsToUser() //tested // Error Handling
-//getUserComments() // tested // Error Handling
-//userLikesAProduct() // tested // Error Handling
-//getUserLikedProducts() //tested // Error Handling
-//userPurchasesAProduct() // tested // Error Handling
-//userViewsAProduct() //tested // Error Handling
-//getUserViewedProdcuts() //tested // Error Handling
-//getUserBoughtProducts()// tested // Error Handling
 
 const mongoCollections = require("../config/mongoCollections");
 const users = mongoCollections.users;
@@ -185,7 +174,7 @@ module.exports = {
     if (updatedInfo.updatedCount === 0)
       throw "Update failed to add purchase info to user collection!";
 
-    await products.updateStockOfProduct(ProductID);
+    // await products.updateStockOfProduct(ProductID);
   },
 
   async userViewsAProduct(UserID, ProductID) {
@@ -250,4 +239,35 @@ module.exports = {
     }
     return productsList;
   },
+
+  //rishi part
+  async updateUser(userId, firstName, lastName, phoneNumber, emailId, address){
+    errorHandler.checkStringObjectId(userId, "User ID");
+    errorHandler.checkString(firstName, "First Name");
+    errorHandler.checkString(lastName, "Last Name");
+    errorHandler.checkEmail(emailId, "email ID");
+    errorHandler.checkPhoneNumber(phoneNumber);
+    errorHandler.checkAddress(address);
+
+    const parsedId = ObjectId(userId);
+    const usersCollection = await users();
+    const user = await usersCollection.findOne({ _id: parsedId });
+    if (user === null){
+      throw "No user found";
+    }
+    else{
+      let updateUser = {
+        firstName: firstName,
+        lastName: lastName,
+        mobile: phoneNumber,
+        emailId: emailId.toLowerCase(),
+        address: address,
+      };
+      let updatedUser = await usersCollection.updateOne({_id: parsedId}, {$set: updateUser});
+      if (updatedUser.updatedCount === 0) throw "Could not add User.";
+      updatedUser = await this.getUser(userId);
+      return updatedUser;
+    }
+
+  }
 };
