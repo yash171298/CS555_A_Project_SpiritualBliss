@@ -14,40 +14,37 @@ router.post("/product", async (req, res) => {
   const productInfo = req.body;
   console.log(productInfo);
   console.log("Fd");
-  productInfo["price"] = parseFloat(productInfo.price);
-  productInfo["stock"] = parseInt(productInfo.stock);
+  // productInfo["price"] = parseFloat(productInfo.price);
+  // productInfo["stock"] = parseInt(productInfo.stock);
 
   console.log(productInfo.productImage);
 
   console.log(productInfo);
   try {
-    if (isNaN(productInfo["price"])) {
-      throw "price is invalid.";
-    }
+    // if (isNaN(productInfo["price"])) {
+    //   throw "price is invalid.";
+    // }
 
-    if (isNaN(productInfo["stock"])) {
-      throw "Stock is invalid";
-    }
+    // if (isNaN(productInfo["stock"])) {
+    //   throw "Stock is invalid";
+    // }
     errorHandler.checkObject(productInfo, "Product form data");
     errorHandler.checkString(productInfo.title, "title");
     errorHandler.checkString(productInfo.description, "Description");
     errorHandler.checkString(productInfo.productImage, "Product Image"); //have to check other test cases
     errorHandler.checkString(productInfo.createdBy, "Created By");
-    errorHandler.checkInt(productInfo.stock, "Stock");
-    errorHandler.checkFacet(productInfo.facet);
-    errorHandler.checkFloat(productInfo.price, "price");
+    // errorHandler.checkInt(productInfo.stock, "Stock");
+    // errorHandler.checkFacet(productInfo.facet);
+    // errorHandler.checkFloat(productInfo.price, "price");
 
-    const { title, description, productImage, createdBy, stock, facet, price } =
+    const { title, description, productImage, createdBy} =
       productInfo;
 
     const newProduct = await productsData.addProduct(
       title,
       description,
       productImage,
-      createdBy,
-      stock,
-      facet,
-      price
+      createdBy
     );
 
     if (req.session.admin) {

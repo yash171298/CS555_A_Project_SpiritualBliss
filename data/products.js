@@ -4,19 +4,6 @@ const { ObjectId } = require("mongodb");
 const errorHandler = require("../Error/DatabaseErrorHandling");
 const { checkStringObjectId } = require("../Error/DatabaseErrorHandling");
 
-//functions in this file
-
-//getAllProducts() // tested //Error Handling
-//getProductById(id) // tested // Error Handling
-//addProduct() // tested // Error Handling
-//addCommentsToProduct() // tested //Error Handling
-//getProductComments() // tested //Error Handling
-//addLike() //tested //Error Handling
-//updateStockOfProduct() // tested //Error Handling
-//deleteProduct() // tested //Error Handling
-//searchProduct() // tested //Error Handling
-//filterProducts() // tested //Error Handling
-//sortProducts() // partially tested //Error Handling // didnt test with different page no
 
 let exportedMethods = {
   async getAllProducts() {
@@ -69,18 +56,14 @@ let exportedMethods = {
     title,
     description,
     productImage,
-    createdBy,
-    stock,
-    facet,
-    price
+    createdBy
+   
   ) {
     errorHandler.checkString(title, "title");
     errorHandler.checkString(description, "Description");
     errorHandler.checkString(productImage, "Product Image"); //have to check other test cases
     errorHandler.checkString(createdBy, "Created By");
-    errorHandler.checkInt(stock, "Stock");
-    errorHandler.checkFacet(facet);
-    errorHandler.checkFloat(price, "price");
+    
 
     const productType = require("./index").productType;
     const productCollection = await products();
@@ -93,106 +76,18 @@ let exportedMethods = {
       likedBy: [],
       createdBy: createdBy,
       createdAt: new Date(),
-      stock: stock,
-      facet: facet,
-      price: price,
+   
     };
 
-    for (attribute of facet) {
-      if (!isNaN(parseFloat(attribute.value))) {
-        attribute.value = parseFloat(attribute.value);
-      }
-    }
-
-    if (await productType.doesProductTypeExist(facet[0]["value"])) {
-      console.log(facet[0]["value"]);
-      const removedProp = facet[0];
-      let index = 0;
-      for (attribute of facet) {
-        if (index == 0) {
-          index = index + 1;
-          continue;
-        }
-
-        const newProp = {
-          name: attribute.property,
-          type: typeof attribute.value,
-          values: [attribute.value],
-        };
-
-        if (
-          await productType.doesPropertyOfProductTypeExist(
-            removedProp["value"],
-            newProp
-          )
-        ) {
-          const proptypes = await productType.getProductTypes();
-          for (productype of proptypes) {
-            if (productype.type == removedProp["value"]) {
-              for (prop of productype.properties) {
-                if (prop.name == newProp.name) {
-                  if (prop.type != newProp.type) {
-                    throw [
-                      `${newProp.name} property already exists and should be of type ${prop.type}`,
-                    ];
-                    // throwing array to  differentiate this error other errors.
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+  
 
     const insertedInfo = await productCollection.insertOne(newProduct);
     console.log(insertedInfo.insertedId, "ff");
     if (insertedInfo.insertedCount === 0) throw "Insert failed!";
 
-    if (await productType.doesProductTypeExist(facet[0]["value"])) {
-      console.log(facet[0]["value"]);
-      const removedProp = facet.shift();
-      for (attribute of facet) {
-        const newProp = {
-          name: attribute.property,
-          type: typeof attribute.value,
-          values: [attribute.value],
-        };
-
-        if (
-          await productType.doesPropertyOfProductTypeExist(
-            removedProp["value"],
-            newProp
-          )
-        ) {
-          await productType.updateCountOfAPropertyforGivenType(
-            removedProp["value"],
-            newProp,
-            true,
-            stock
-          );
-          await productType.updateValuesOFAPropertyWithGivenType(
-            removedProp["value"],
-            newProp
-          );
-          continue;
-        } else {
-          await productType.updatePropertiesOfProduct(
-            removedProp["value"],
-            newProp,
-            stock
-          );
-        }
-      }
-      await productType.updateCountOfProducts(
-        removedProp["value"],
-        true,
-        stock
-      );
-    } else {
-      let removedProp = facet.shift();
-      await productType.addNewProductType(removedProp["value"], facet, stock);
-    }
+   
+    
+    
 
     return insertedInfo.insertedId.toString();
   },
@@ -341,31 +236,31 @@ let exportedMethods = {
     });
     if (deletedInfo.deletedCount === 0) throw "failed to delete a product";
 
-    await productType.updateCountOfProducts(
-      product.facet[0]["value"],
-      false,
-      stock
-    );
+    // await productType.updateCountOfProducts(
+    //   product.facet[0]["value"],
+    //   false,
+    //   stock
+    // );
 
-    const removedProp = product.facet.shift();
+    // const removedProp = product.facet.shift();
 
-    for (attribute of product.facet) {
-      const newProp = {
-        name: attribute.property,
-        type: typeof attribute.value,
-      };
+    // for (attribute of product.facet) {
+    //   const newProp = {
+    //     name: attribute.property,
+    //     type: typeof attribute.value,
+    //   };
 
-      await productType.updateCountOfAPropertyforGivenType(
-        removedProp["value"],
-        newProp,
-        false,
-        stock
-      );
-    }
-    await productType.deleteProductPropertiesWithCountZero(
-      removedProp["value"]
-    );
-    await productType.deleteProductTypeWithCountZero();
+    //   await productType.updateCountOfAPropertyforGivenType(
+    //     removedProp["value"],
+    //     newProp,
+    //     false,
+    //     stock
+    //   );
+    // }
+    // await productType.deleteProductPropertiesWithCountZero(
+    //   removedProp["value"]
+    // );
+    // await productType.deleteProductTypeWithCountZero();
   },
 
   async searchProduct(searchTerm) {

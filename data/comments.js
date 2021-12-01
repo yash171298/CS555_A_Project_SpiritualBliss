@@ -5,10 +5,6 @@ const usersData = require("./users");
 const { ObjectId } = require("mongodb");
 const errorHandler = require("../Error/DatabaseErrorHandling");
 
-// functions in this file
-
-//addComment // tested // Error Handling
-//getComment // tested  // Error Handling
 
 async function addComment(userId, productId, commentText) {
   errorHandler.checkStringObjectId(userId, "User ID");

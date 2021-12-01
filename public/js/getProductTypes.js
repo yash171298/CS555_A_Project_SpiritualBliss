@@ -1,5 +1,3 @@
-
-//here will select from meditation anf fitness type
 const productTypes_dropdown = $("#displayProp");
 $(document).ready(function () {
   $.ajax({

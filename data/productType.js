@@ -3,29 +3,6 @@ const { ObjectId } = require("mongodb");
 
 const errorHandler = require("../Error/DatabaseErrorHandling");
 
-// Sample ProductType document
-
-// let productType = {
-//   _id: ObjectId,
-//   type: "plant",
-//   properties: [
-//     { name: "plant_height", type: "number" },
-//     { name: "plant_color", type: "string" },
-//   ],
-//   countOfProducts: 10,
-// };
-
-//addNewProductType() //tested //Error Handling
-//deleteProductType()//tested  //Error Handling //We dont really need this database function.
-//getProductTypes()  //tested //Error Handling
-//updateCountOfProducts() //tested //Error Handling
-//doesProductTypeExist() //tested //Error Handling
-//updateCountOfAPropertyforGivenType() //tested //Error Handling
-//updatePropertiesOfProduct() //tested //Error Handling
-//doesPropertyOfProductTypeExist() //tested //Error Handling
-//deleteProductPropertiesWithCountZero() //tested //Error Handling
-//deleteProductTypeWithCountZero() //tested //Error Handling
-// updateValuesOFAPropertyWithGivenType() //tested //Error Handling
 
 module.exports = exportedMethods = {
   async addNewProductType(type, properties, countOfProducts) {
@@ -241,13 +218,7 @@ module.exports = exportedMethods = {
         },
       }
 
-      // {
-      //   $set: {
-      //     "properties.$.values": {
-      //       "properties.$.values": property.values[0],
-      //     },
-      //   },
-      // }
+     
     );
 
     console.log(updatedInfo.modifiedCount);

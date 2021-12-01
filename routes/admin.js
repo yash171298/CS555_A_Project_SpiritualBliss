@@ -139,7 +139,7 @@ router.post("/signup", async (req, res) => {
 
       if (!errorCheck.stringCheck(secretPasscode))
         errors.push("Invalid Passcode");
-      if (!(secretPasscode == "CS546")) errors.push("Invalid Passcode");
+      if (!(secretPasscode == "CS555")) errors.push("Invalid Passcode");
       if (errors.length > 0) {
         return res.render("pages/adminError", {
           title: "error page",
