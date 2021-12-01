@@ -19,11 +19,11 @@ $(document).ready(function () {
     return true;
   }
 
-  function checkFacet(facet) {
-    if (facet.length < 2) {
-      throw `Item should have atleast one property.`;
-    }
-  }
+  // function checkFacet(facet) {
+  //   if (facet.length < 2) {
+  //     throw `Item should have atleast one property.`;
+  //   }
+  // }
 
   function checkInt(parameter) {
     const paramter = parseInt(parameter);
@@ -74,27 +74,27 @@ $(document).ready(function () {
       return;
     }
 
-    if (!checkString(body["product_type"])) {
-      alert("please enter valid product_type.");
-      return;
-    }
+    // if (!checkString(body["product_type"])) {
+    //   alert("please enter valid product_type.");
+    //   return;
+    // }
 
-    if (!checkInt(body["stock"])) {
-      alert("stock has to be positive number");
-      return;
-    }
+    // if (!checkInt(body["stock"])) {
+    //   alert("stock has to be positive number");
+    //   return;
+    // }
 
-    if (!checkInt(body["price"])) {
-      alert("price has to be positive number");
-      return;
-    }
+    // if (!checkInt(body["price"])) {
+    //   alert("price has to be positive number");
+    //   return;
+    // }
 
-    try {
-      checkFacet(body["facet"]);
-    } catch (e) {
-      alert(e);
-      return;
-    }
+    // try {
+    //   checkFacet(body["facet"]);
+    // } catch (e) {
+    //   alert(e);
+    //   return;
+    // }
 
     $.ajax({
       url: "/product", // url where to submit the request
@@ -146,7 +146,10 @@ $(document).ready(function () {
         //    alert("deleted");
         location.reload();
       },
-      error: function () {},
+      
+      error: function () {
+        location.reload();
+      },
     });
   });
 
@@ -176,16 +179,16 @@ $(document).ready(function () {
     });
   });
 
-  // $("#cart_btn").on("click", function (e) {
-  //   $.ajax({
-  //     url: "/cart/", // url where to submit the request
-  //     type: "get", // type of action POST || GET
-  //     success: function (data) {
-  //       window.location.href = "http://localhost:3000/cart/";
-  //     },
-  //     error: function () {},
-  //   });
-  // });
+  $("#cart_btn").on("click", function (e) {
+    $.ajax({
+      url: "/cart/", // url where to submit the request
+      type: "get", // type of action POST || GET
+      success: function (data) {
+        window.location.href = "http://localhost:3000/cart/";
+      },
+      error: function () {},
+    });
+  });
 
   $("#confirmation").on("click", function (e) {
     alert("Purchase done sucessfully");

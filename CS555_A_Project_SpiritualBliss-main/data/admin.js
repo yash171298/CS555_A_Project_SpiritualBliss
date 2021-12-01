@@ -4,13 +4,6 @@ const admin = mongoCollections.admin;
 const bcrypt = require("bcryptjs");
 const errorHandler = require("../Error/DatabaseErrorHandling");
 
-// functions in this file
-
-//addAdmin() // tested //Error Handling
-//getAdmin() //tested  // Error Handling
-//adminAddsAProduct() // tested // Error Handling
-//adminDeletesAProduct() //tested  //Error Handling
-
 const saltNumber = 14;
 
 module.exports = {

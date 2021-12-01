@@ -8,11 +8,11 @@
   min-height: 100vh;
 }
 
-/* .bg-image {
+.bg-image {
   background-image: url("https://mocah.org/thumbs/505254-yellow-orange.jpg");
   background-size: cover;
   background-position: center;
-} */
+}
 
 .login-heading {
   font-weight: 300;
@@ -118,8 +118,9 @@
 .text-success {
   color: #cf8128!important;
 }
+
 #navbarNav {
-  margin-left: 60%;
+  margin-left: 57%;
 }
 .navbar-light .navbar-brand {
   color: #fff;
@@ -138,21 +139,22 @@
   margin-left: 65%;
 }
 #div_search_bar {
-  width: 70%;
-  background-color: #e8dcf3;
-  margin-left: 15%;
-  padding: 1%;
+  width: 84%;
+    background-color: #ceb77e;
+    margin-left: 8%;
+    padding: 1%;
+    margin-top: 0%;
 }
 #search_bar {
   width: 90%;
 }
 #search_submit {
-  border-color: #28a745;
+  background-color: #4e3111;
+    color: wheat;
 }
 .div_dropdown {
-  padding: 1%;
-  background-color: #deeae0;
-  padding-left: 15%;
+  padding-left: 8%;
+    margin-top: 2%;
 }
 .dropdown-menu.show {
   position: absolute;
@@ -162,14 +164,16 @@
   will-change: transform;
 }
 #dropdownMenuLink {
-  background-color: #28a745;
+  background-color: #4e3111;
   /* margin-bottom: 28%; */
 }
 
 /* .container {
-height: 70%;
-margin-top: 3%;
-} */
+  /* background-color: #dffbaa94; */
+/* height: 350px; */
+/* padding-top: 3%; */
+/* margin-top: 2%; */
+/* } */
 
 .home-section--title {
   font-size: 20px;
@@ -277,6 +281,7 @@ ul {
 
 #admin_modal {
   margin-right: 4%;
+  margin-top: -15px;
 }
 
 #user_container {
@@ -296,13 +301,71 @@ ul {
 .cart_dynamic_content {
   color: #000;
 }
-
-/* slider css */
-* {
-	padding: 0;
-	margin: 0;
-	overflow: hidden;
+#user_list{
+  margin-top: 2%;
+  color: #b78f5b!important;
 }
+.userinfo_div{
+  background-color: transparent;
+  color: wheat;
+  margin-top: 3%;
+  margin-left: 10%;
+}
+.jumbotron{
+  background-color: transparent;
+  color: wheat;
+}
+.list-group-item {
+  background-color: transparent;
+  color: wheat;
+}
+.col-form-label {
+  color: wheat;
+}
+.new_font_color{
+  color: wheat;
+}
+body{
+  background-image: url("https://images.unsplash.com/photo-1524863479829-916d8e77f114?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+}
+.home_search_bar{
+  background-color: transparent;
+}
+.card{
+  margin-bottom: 30px;
+}
+
+.update_user_container{
+  background-color: #dffbaa94;
+    height: auto;
+    padding-top: 2%;
+    margin-top: 2%;
+}
+
+.up_user{
+  color: #000;
+}
+
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5%;
+  background-color: black;
+  color: #cf8128;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.table_head{
+  color: #000;
+}
+tbody{
+  color: #f5efe5 !important;
+}
+
 .slider {
 	width: 600px;
 	height: 300px;
@@ -334,10 +397,12 @@ img {
 	70% {left: -605px;}
 	100% {left: 0;}
 }
-body{
-  background-image: url("https://images.unsplash.com/photo-1524863479829-916d8e77f114?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+.slider {
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+  margin-left: 21%;
 }
-
 .home_qoute {
   text-align: center;
   color:#503d21;
@@ -347,10 +412,4 @@ body{
   text-align: center;
   color:#503d21;
   font-size: 20px;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #bd7724;
-  border-color: #bd7724;
 }

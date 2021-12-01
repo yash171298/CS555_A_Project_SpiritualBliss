@@ -1,5 +1,5 @@
 {
-  "name": "agile_yoga",
+  "name": "spiritual-bliss",
   "version": "1.0.0",
   "description": "Prototype of our project.",
   "main": "app.js",
@@ -16,23 +16,22 @@
     "Master",
     "Prototype"
   ],
-  "author": "devika",
+  "author": "Group 5",
   "license": "ISC",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/"
   },
-  "homepage": "",
+  "homepage": "https://github.com/",
   "dependencies": {
     "axios": "^0.21.1",
-    "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.0",
-    "express-session": "^1.17.2",
+    "express-session": "^1.17.1",
     "handlebars": "^4.7.7",
-    "mongodb": "^3.7.3",
+    "mongodb": "^3.6.6",
     "nodemon": "^2.0.7",
     "uuidv4": "^6.2.7",
-    "xss": "^1.0.10"
+    "xss": "^1.0.9"
   }
 }
