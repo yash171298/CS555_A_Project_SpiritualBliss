@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 });
 
 
-router.post('/', async (req, res) => {
+router.post('/contactUs', async (req, res) => {
 
     try {
         let flag = false;
@@ -61,7 +61,9 @@ router.post('/', async (req, res) => {
         }
         res.status(newUser.statusCode?newUser.statusCode:200).render('pages/SuccessMessage', { keyobject: newUser.data, message: newUser.message, error: newUser.error })
     } catch (e) {
-        res.status(e.statusCode ? e.statusCode : 400).render('posts/sign-up', { message: e.message, error: e.error })
+        res.status(e.statusCode ? e.statusCode : 400).render('pages/SuccessMessage', { message: e.message, error: e.error })
     }
 });
+
+module.exports = router;
 

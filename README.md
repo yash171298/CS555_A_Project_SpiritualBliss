@@ -39,3 +39,13 @@ If you have to add a feature, please fork the repo and create a pull request.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
+<!-- Execution -->
+
+To execute the program you need to first open this repository on visual studio code.
+Step 1: Open new terminal
+Step 2: Type in terminal "npm install"
+Step 3: Run the seed file which will seed the database by typing "npm run seed" in the terminal
+Step 4: Final step enter "npm start" which will then host our server on http://localhost:3000.
+
+## Thank you for reading
+
