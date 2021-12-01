@@ -19,4 +19,5 @@ module.exports = {
   comments: getCollectionFn("comments"),
   productType: getCollectionFn("productType"), //for type of videos
   admin: getCollectionFn("admin"),
+  feedback: getCollectionFn("feedback")
 };

@@ -4,6 +4,7 @@ const path = require("path");
 const userRoutes = require("./users.js");
 const adminRoutes = require("./admin");
 const commentsRoutes = require("./comments");
+const feedbackRoutes = require("./feedback");
 
 const constructorMethod = (app) => {
   // app.use("/", (req, res) => {
@@ -13,6 +14,7 @@ const constructorMethod = (app) => {
   app.use("/users", userRoutes);
   app.use("/admin", adminRoutes);
   app.use("/comments", commentsRoutes);
+  app.use("/feedback", feedbackRoutes);
   app.use("*", (req, res) => {
     res.redirect("/");
   });

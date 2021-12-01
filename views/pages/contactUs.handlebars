@@ -1,11 +1,13 @@
-{{> headers this}}
+
+
+
 
 <div class="container">
   <div class="row justify-content-md-center row-custom">
     <div class="col-sm-8">
       <h1>Provide your Feedback</h1>
-      {{> error-section this}} 
-      <form action="/sign-up" method="POST" class="userform" >
+     
+      <form action="/feedback/contactUs" method="POST" class="userform" >
         <div class="form-group">
           <label for="firstName">First Name</label>
           <input type="text" class="form-control" id="first_name" name="first_name" aria-describedby="emailHelp" placeholder="Enter First Name"  autocomplete="off" required>
@@ -40,7 +42,7 @@
           <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div> -->
         <div class="form-group">
-          Click <a href="Devika put link here">here </a> to back to home page
+          Click <a href="http://localhost:3000">here </a> to back to home page
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
