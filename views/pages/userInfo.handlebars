@@ -1,0 +1,16 @@
+<h1 id="user_list" class="text-primary text-center">User Basic Information</h1>
+
+{{#if userInfo}}
+  <div class="userinfo_div">
+    <h3 class="display-4">{{userInfo.firstName}} {{userInfo.lastName}}</h3>
+    <p class="lead">Email: {{userInfo.emailId}}</p>
+    <p>Phone: {{userInfo.mobile}}</p>
+    {{#each userInfo.address}}
+      <p> {{this}}</p>
+    {{/each}}
+  </div>
+{{/if}}
+
+<div style="margin-left: 10%;">
+  <a href="/admin/users" class="btn btn-warning">Back</a>
+</div>
