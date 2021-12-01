@@ -15,8 +15,8 @@ const getCollectionFn = (collection) => {
 
 module.exports = {
   users: getCollectionFn("users"),
-  products: getCollectionFn("products"),
+  products: getCollectionFn("products"), // this is for videos
   comments: getCollectionFn("comments"),
-  productType: getCollectionFn("productType"),
+  productType: getCollectionFn("productType"), //for type of videos
   admin: getCollectionFn("admin"),
 };

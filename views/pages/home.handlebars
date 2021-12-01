@@ -1,0 +1,98 @@
+<div class="row home_search_bar">
+  
+  <div id="div_search_bar">
+    <form
+      class="form-inline my-2 my-lg-0"
+      id="searchForm"
+      action="/search"
+      method="POST"
+    >
+      <input
+        id="search_bar"
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+        name="searchTerm"
+      />
+      <button
+        id="search_submit"
+        class="btn my-2 my-sm-0"
+        type="submit"
+      >Search</button>
+    </form>
+  </div>
+  
+
+<!-- Example single danger button -->
+
+  {{!-- <div class="div_dropdown">
+    <div class="dropdown show btn-group" id="ddl_plants">
+      <a
+        class="btn btn-secondary dropdown-toggle"
+        href="#"
+        role="button"
+        id="dropdownMenuLink"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Select Yoga Type
+      </a>
+
+      <div
+        class="dropdown-menu"
+        id="displayProp"
+        aria-labelledby="dropdownMenuLink"
+      >
+      </div>
+    </div>
+
+  </div> --}}
+  </div>
+
+
+
+<div>
+
+</div>
+
+
+<div id="filterDiv">
+
+</div>
+
+<div class="container">
+  <div class="row" style="height:450px;overflow:auto;border:2px solid #ceb77e;margin-top:7%;">
+    {{#if hasProduct}}
+      {{#each productList}}
+
+        <section class="col-lg-4 col-md-4 col-sm-7 col-xs-12">
+          <div class="mx-3 mt-4 card">
+            
+            <iframe width="316" height="200"
+src={{this.productImage}}>
+</iframe>
+            
+            <div class="card-body">
+              <p class="card-title">{{this.title}}</p>
+              <p style ="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" class="card-text">{{this.description}}</p>
+
+            </div>
+            <div class="card-footer">
+              <a
+                class="btn btn-primary text-center"
+                href="products/product/{{this._id}}"
+                data-id="{{this._id}}"
+              > View Video Details</a>
+            </div>
+          </div>
+        </section>
+      {{/each}}
+    {{else}}
+      <p> No Products Found.</p>
+
+    {{/if}}
+  </div>
+</div>
+{{> (lookup . 'partial') }}
